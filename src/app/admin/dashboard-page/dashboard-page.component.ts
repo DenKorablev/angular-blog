@@ -3,6 +3,7 @@ import { PostService } from '../../shared/post.service';
 import { Post } from '../../shared/interfaces';
 import { Subscription } from 'rxjs';
 import { post } from 'selenium-webdriver/http';
+import { AlertService } from '../shared/service/alert.services';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -17,7 +18,8 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   searchStr = '';
 
   constructor(
-    private postService: PostService
+    private postService: PostService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -29,6 +31,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   remove(id: string) {
     this.dSub = this.postService.remove(id).subscribe(() => {
       this.posts = this.posts.filter(post => post.id !== id);
+      this.alertService.warning('Пост был удален');
     });
   }
 

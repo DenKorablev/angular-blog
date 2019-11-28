@@ -5,6 +5,7 @@ import { PostService } from '../../shared/post.service';
 import { switchMap } from 'rxjs/operators';
 import { Post } from '../../shared/interfaces';
 import { Subscription } from 'rxjs';
+import { AlertService } from '../shared/service/alert.services';
 
 @Component({
   selector: 'app-edit-page',
@@ -21,7 +22,8 @@ export class EditPageComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private postsService: PostService
+    private postsService: PostService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -55,7 +57,8 @@ export class EditPageComponent implements OnInit, OnDestroy {
       text: this.form.value.text,
       title: this.form.value.title
     }).subscribe(() => {
-    this.submited = false;
+      this.submited = false;
+      this.alertService.success('Пост был обновлен');
     });
   }
 }
