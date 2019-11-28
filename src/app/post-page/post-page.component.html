@@ -3,12 +3,14 @@
     <div class="header">
       <h1>{{ post.title }}</h1>
 
-      <div routerLink="/" class="btn btn-link">На главную</div>
+      <button routerLink="/" class="btn btn-link">На главную</button>
     </div>
+
     <div class="info">
       <strong>{{ post.author }}</strong>
-      <small>{{ post.date | date:'medium': null:'ru' }}</small>
+      <small>{{ post.date | date:'medium':null:'ru' }}</small>
     </div>
+
     <div>
       <quill-view-html [content]="post.text"></quill-view-html>
     </div>
