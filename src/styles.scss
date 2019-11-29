@@ -73,12 +73,17 @@ img {
   padding: 1rem;
   border: #ccc 1px dotted;
   margin: 0.7rem 0;
-  background: antiquewhite;
+  border-radius: 0.3rem;
+  background: rgba(0,0,0,.03);
 
   &-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .post-date {
+    color: #7887A5;
   }
 
   &-content {
@@ -270,10 +275,12 @@ table th {
   width: 100%;
   opacity: 0.9;
   margin-bottom: 1rem;
+  color: white;
 
   &.main {
     justify-content: center;
     border-bottom: 1px solid var(--dark-color);
+    background: #3f51b5;
   }
 
   ul {
@@ -294,5 +301,14 @@ table th {
     &:hover {
       color: var(--light-color);
     }
+  }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@media (max-width: 900px) {
+  .card-header h2 {
+    font-size: 18px;
   }
 }
